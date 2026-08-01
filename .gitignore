@@ -16,3 +16,4 @@ node_modules/
 # Deployment tooling
 .netlify/
 .vercel/
+# CI/CD test: 2026-08-01

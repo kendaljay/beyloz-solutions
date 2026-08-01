@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---- Contact / booking form (demo submit) ---- */
+  /* ---- Contact form (Formspree) ---- */
   const contactForm = document.querySelector('#contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -123,11 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const original = btn.textContent;
       btn.textContent = 'Wird gesendet …';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Nachricht gesendet ✓';
-        contactForm.reset();
-        setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 2600);
-      }, 900);
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then((response) => {
+          btn.textContent = response.ok ? 'Nachricht gesendet ✓' : 'Fehler — bitte erneut versuchen';
+          if (response.ok) contactForm.reset();
+        })
+        .catch(() => { btn.textContent = 'Fehler — bitte erneut versuchen'; })
+        .finally(() => {
+          setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 2600);
+        });
     });
   }
 

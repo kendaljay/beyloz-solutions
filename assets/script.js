@@ -139,15 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---- Newsletter form (demo submit) ---- */
+  /* ---- Newsletter form (Brevo, submits to hidden iframe) ---- */
   const newsletterForm = document.querySelector('#newsletter-form');
   if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-      e.preventDefault();
+    newsletterForm.addEventListener('submit', () => {
       const btn = newsletterForm.querySelector('button');
+      const original = btn.textContent;
       btn.textContent = 'Angemeldet ✓';
-      newsletterForm.reset();
-      setTimeout(() => { btn.textContent = 'Anmelden'; }, 2600);
+      btn.disabled = true;
+      setTimeout(() => {
+        newsletterForm.reset();
+        btn.textContent = original;
+        btn.disabled = false;
+      }, 2600);
     });
   }
 

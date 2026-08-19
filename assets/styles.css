@@ -19,6 +19,9 @@
   --accent:     #3E6FF2;   /* Beyloz Blue */
   --accent-2:   #6E93FF;
   --accent-ice: #EAF0FF;
+  --success:      #1FAA59; /* growth / result green */
+  --success-2:    #34C97A;
+  --success-ice:  #E6F7EC;
 
   --bg:        var(--white);
   --bg-alt:    var(--mist);
@@ -56,6 +59,8 @@
   --glass-bg:  rgba(23,28,36,0.55);
   --glass-brd: rgba(255,255,255,0.08);
   --accent-ice: #131B2E;
+  --success:     #34D399;
+  --success-ice: #0F2A1E;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -479,6 +484,17 @@ footer{ background:var(--ink); color:#EDEFF4; padding:90px 0 40px; }
 .text-center{ text-align:center; margin-left:auto; margin-right:auto; }
 .badge-list{ display:flex; flex-wrap:wrap; gap:10px; }
 .badge{ padding:8px 16px; border-radius:999px; background:var(--accent-ice); color:var(--accent); font-size:0.82rem; font-weight:600; }
+.badge-success{ background:var(--success-ice); color:var(--success); }
+
+/* ---- Stat / portfolio cards (growth results) ---- */
+.stat-card{ position:relative; overflow:hidden; }
+.stat-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.stat-trend{ display:flex; align-items:center; opacity:0.9; }
+.stat-trend svg{ overflow:visible; }
+.stat-figure{ display:flex; align-items:center; gap:10px; margin-top:28px; }
+.stat-figure .arrow-up{ width:26px; height:26px; flex-shrink:0; color:var(--success); }
+.stat-figure .num{ font-family:var(--ff-display); font-weight:800; font-size:2.6rem; line-height:1; color:var(--success); letter-spacing:-0.01em; }
+.stat-card h3{ margin-top:14px; }
 .legal h2{ font-size:1.4rem; margin-top:44px; margin-bottom:14px; }
 .legal p, .legal li{ color:var(--text-soft); margin-bottom:10px; }
 .legal ul{ list-style:disc; padding-left:22px; }

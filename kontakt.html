@@ -6,6 +6,7 @@
 <title>Kontakt — Beyloz Solutions</title>
 <meta name="description" content="Kostenlose Erstberatung anfragen: Kontaktformular, Telefon, E-Mail und LinkedIn von Beyloz Solutions.">
 <link rel="stylesheet" href="assets/styles.css">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 
@@ -100,10 +101,8 @@
           <div class="card reveal mt-24">
             <h3>Termin direkt buchen</h3>
             <p class="mt-8" style="color:var(--text-soft); font-size:0.94rem;">Lieber gleich einen festen Termin? Wählen Sie einen freien Slot für Ihre 30-minütige Erstberatung.</p>
-            <div class="mt-24" style="display:flex; flex-direction:column; gap:10px;">
-              <button class="btn btn-ghost" style="justify-content:space-between; width:100%;" type="button">Morgen, 10:00 Uhr <span class="dot"></span></button>
-              <button class="btn btn-ghost" style="justify-content:space-between; width:100%;" type="button">Morgen, 14:30 Uhr <span class="dot"></span></button>
-              <button class="btn btn-ghost" style="justify-content:space-between; width:100%;" type="button">Übermorgen, 9:00 Uhr <span class="dot"></span></button>
+            <div class="mt-24">
+              <button id="calendly-trigger" class="btn btn-primary" style="width:100%;" type="button" data-calendly-url="https://calendly.com/kendaljay/30min">Verfügbare Termine ansehen</button>
             </div>
           </div>
         </div>
@@ -163,6 +162,7 @@
   <form class="chat-input-row"><input type="text" placeholder="Ihre Nachricht …" aria-label="Nachricht eingeben"><button type="submit" aria-label="Senden"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
 </div>
 
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
 <script src="assets/script.js"></script>
 </body>
 </html>

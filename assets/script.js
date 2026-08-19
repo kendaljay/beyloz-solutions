@@ -155,4 +155,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---- Calendly booking trigger ---- */
+  const calendlyTrigger = document.querySelector('#calendly-trigger');
+  if (calendlyTrigger && window.Calendly) {
+    calendlyTrigger.addEventListener('click', () => {
+      window.Calendly.initPopupWidget({ url: calendlyTrigger.dataset.calendlyUrl });
+    });
+  }
+
 });

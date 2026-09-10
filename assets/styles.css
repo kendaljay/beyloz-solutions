@@ -347,6 +347,37 @@ p{ margin:0; }
 }
 .hero-actions{ display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; }
 
+/* ---- Hero eyebrow marquee (mobile only, seamless infinite scroll) ---- */
+.eyebrow-marquee{ display:inline-block; overflow:visible; }
+.eyebrow-marquee-track{ display:inline-flex; }
+.eyebrow-marquee-track span:nth-child(2){ display:none; }
+@media (max-width:640px){
+  .hero .eyebrow{ display:flex; width:100%; }
+  .hero .eyebrow-marquee{
+    display:block;
+    flex:1 1 auto;
+    min-width:0;
+    overflow:hidden;
+    mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  }
+  .hero .eyebrow-marquee-track{
+    display:flex;
+    width:max-content;
+    animation:eyebrow-marquee-scroll 18s linear infinite;
+  }
+  .hero .eyebrow-marquee-track span:nth-child(2){ display:flex; align-items:center; }
+  .hero .eyebrow-marquee-track span{
+    flex-shrink:0;
+    white-space:nowrap;
+    padding-right:40px;
+  }
+}
+@keyframes eyebrow-marquee-scroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
 /* ---- Hero diagram (Analyse -> Auswahl -> Partner -> Umsetzung) ---- */
 .hero-diagram{ display:flex; flex-direction:column; padding-left:8px; }
 .hero-diagram-step{ display:flex; align-items:center; gap:18px; padding:18px 0; position:relative; }

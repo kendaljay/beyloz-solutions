@@ -91,6 +91,33 @@ a{ color:inherit; text-decoration:none; }
 ul{ list-style:none; margin:0; padding:0; }
 button{ font-family:inherit; }
 
+/* ---- Skip link (visually hidden, appears on keyboard focus) ---- */
+.sr-only{
+  position:absolute;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.sr-only:focus{
+  position:fixed;
+  top:12px; left:12px;
+  width:auto; height:auto;
+  padding:12px 20px;
+  margin:0;
+  clip:auto;
+  overflow:visible;
+  white-space:normal;
+  background:var(--ink);
+  color:#fff;
+  z-index:9999;
+  border-radius:var(--radius-s);
+  font-size:0.85rem;
+  font-weight:600;
+}
+
 ::selection{ background:var(--accent); color:#fff; }
 
 :focus-visible{

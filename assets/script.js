@@ -15,13 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---- Mobile menu ---- */
   const burger = document.querySelector('.nav-burger');
   const mobileMenu = document.querySelector('.mobile-menu');
+  const mobileMenuClose = document.querySelector('.mobile-menu-close');
   if (burger && mobileMenu) {
+    const setMenuOpen = (open) => {
+      mobileMenu.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
     burger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      burger.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+      setMenuOpen(!mobileMenu.classList.contains('open'));
     });
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', () => setMenuOpen(false));
+    }
     mobileMenu.querySelectorAll('a').forEach(a =>
-      a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+      a.addEventListener('click', () => setMenuOpen(false))
     );
   }
 

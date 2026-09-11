@@ -68,7 +68,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; overflow-x:hidden; }
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
   *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
@@ -339,7 +339,7 @@ p{ margin:0; }
   align-items:center;
   gap:80px;
 }
-.hero-inner{ max-width:620px; }
+.hero-inner{ max-width:620px; min-width:0; }
 .hero h1{ margin-bottom:0; }
 .hero h1 em{
   font-style:normal;
@@ -347,16 +347,21 @@ p{ margin:0; }
 }
 .hero-actions{ display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; }
 
-/* ---- Hero eyebrow marquee (mobile only, seamless infinite scroll) ---- */
-.eyebrow-marquee{ display:inline-block; overflow:visible; }
+/* ---- Hero eyebrow marquee (mobile only, seamless infinite scroll) ----
+   .eyebrow-marquee is a CHILD of .eyebrow, never the same element as
+   .eyebrow itself — keeping them on separate elements avoids two rules
+   fighting over `display` on one node (which previously broke the
+   flex layout and let the wide track escape its overflow boundary). */
+.eyebrow-marquee{ display:inline-block; max-width:100%; overflow:visible; }
 .eyebrow-marquee-track{ display:inline-flex; }
 .eyebrow-marquee-track span:nth-child(2){ display:none; }
 @media (max-width:640px){
-  .hero .eyebrow{ display:flex; width:100%; }
+  .hero .eyebrow{ display:flex; width:100%; max-width:100%; }
   .hero .eyebrow-marquee{
     display:block;
     flex:1 1 auto;
     min-width:0;
+    max-width:100%;
     overflow:hidden;
     mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
     -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
